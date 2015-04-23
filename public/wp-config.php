@@ -7,6 +7,7 @@ $wp_dir = '/wp';
 $content_dir = '/app';
 
 define('WPLANG', "ja");
+define('WP_DEFAULT_THEME', "default");
 
 if (!defined('ABSPATH')) {
   define('ABSPATH', $webroot_dir . $wp_dir);
