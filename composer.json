@@ -1,0 +1,36 @@
+{
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "http://wpackagist.org"
+    },
+    {
+      "type": "composer",
+      "url": "http://languages.koodimonni.fi"
+    }
+  ],
+  "require": {
+    "composer/installers"  : "*",
+    "koodimonni/composer-dropin-installer": "*",
+    "johnpbloch/wordpress" : "*",
+    "vlucas/phpdotenv"     : "*",
+    "koodimonni-language/ja": "*",
+
+    "wpackagist-plugin/timber-library"       : "*",
+
+    "php": ">=5.4"
+  },
+  "extra": {
+    "wordpress-install-dir": "public/wp",
+    "installer-paths": {
+      "public/app/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
+      "public/app/plugins/{$name}/": ["type:wordpress-plugin"],
+      "public/app/themes/{$name}/": ["type:wordpress-theme"]
+    },
+    "dropin-paths": {
+      "public/app/languages/": ["vendor:koodimonni-language"],
+      "public/app/languages/plugins/": ["vendor:koodimonni-plugin-language"],
+      "public/app/languages/themes/": ["vendor:koodimonni-theme-language"]
+    }
+  }
+}
