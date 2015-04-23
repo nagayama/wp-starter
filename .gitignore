@@ -1,0 +1,11 @@
+public/app/*
+!public/app/theme
+!public/app/uploads/.gitkeep
+
+public/wp
+public/.htaccess
+
+.env
+!.env.example
+
+vendor/*
