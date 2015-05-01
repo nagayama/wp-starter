@@ -33,6 +33,7 @@ gulp.task "coffeelint", ->
       level: 'error'
   gulp
     .src   glob.coffee
+    .pipe $.plumber( {errorHandler: $.notify.onError("Error: <%= error.message %>")} )
     .pipe  $.coffeelint opt: conf
     .pipe  $.coffeelint.reporter()
 
@@ -40,6 +41,7 @@ gulp.task "coffee", ["coffeelint"], ->
   gulp
     .src  glob.coffee
     .pipe $.changed dist.coffee
+    .pipe $.plumber( {errorHandler: $.notify.onError("Error: <%= error.message %>")} )
     .pipe $.coffee().on('error', $.util.log)
     .pipe $.if isProduction, $.uglify()
     .pipe $.if isProduction, $.rev()
@@ -62,6 +64,7 @@ gulp.task 'sass', ->
     .src glob.sass
     .pipe $.changed dist.sass
     .pipe $.if !isProduction, $.sourcemaps.init()
+    .pipe $.plumber( {errorHandler: $.notify.onError("Error: <%= error.message %>")} )
     .pipe $.sass()
     .pipe $.autoprefixer 'last 1 version', 'ie 9'
     .pipe $.minifyCss()
