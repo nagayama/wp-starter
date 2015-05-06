@@ -84,5 +84,3 @@ define('DB_COLLATE'  , '');
 $table_prefix = getenv('DB_PREFIX') ? getenv('DB_PREFIX') : 'wp_';
 
 require_once(ABSPATH . 'wp-settings.php');
-
-add_filter('xmlrpc_enabled', '__return_false');
