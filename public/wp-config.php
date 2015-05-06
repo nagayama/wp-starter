@@ -13,9 +13,16 @@ if (!defined('ABSPATH')) {
   define('ABSPATH', $webroot_dir . $wp_dir);
 }
 
-if (file_exists($root_dir . '/.env')) {
-  Dotenv::load($root_dir);
+$envfile = $root_dir . '/.env'
+if (file_exists($envfile)) {
+  Dotenv::load($envfile);
 }
+
+$envfile_ex = $root_dir . '/.env.' . getenv('WP_ENV')
+if (file_exists($envfile_ex)) {
+  Dotenv::load($envfile_ex);
+}
+
 Dotenv::required(array('DB_NAME', 'DB_USER', 'DB_PASSWORD'));
 
 switch (getenv('WP_ENV')) {

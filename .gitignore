@@ -6,6 +6,7 @@ public/wp
 public/.htaccess
 
 .env
+.env.*
 !.env.example
 
 vendor/*
