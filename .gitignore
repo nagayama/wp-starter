@@ -1,12 +1,25 @@
-public/app/*
-!public/app/theme
-!public/app/uploads/.gitkeep
-
-public/wp
-public/.htaccess
+!.gitkeep
 
 .env
 .env.*
 !.env.example
 
-vendor/*
+*.swp
+.sw*
+.css.map
+
+.htaccess
+
+public/app/themes/*/node_modules/
+public/app/themes/*/dist/
+public/app/languages/
+public/app/mu-plugins/
+public/app/plugins/
+public/app/uploads/
+public/app/upgrade/
+public/wp/
+vendor/
+
+public/app/cache/
+public/app/advanced-cache.php
+public/app/wp-cache-config.php
