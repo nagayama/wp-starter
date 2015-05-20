@@ -10,14 +10,14 @@
 
 .htaccess
 
-public/app/themes/*/node_modules/
-public/app/themes/*/dist/
-public/app/languages/
-public/app/mu-plugins/
-public/app/plugins/
-public/app/uploads/
-public/app/upgrade/
-public/wp/
+app/themes/*/node_modules/
+app/themes/*/dist/
+app/languages/
+app/mu-plugins/
+app/plugins/
+app/uploads/
+app/upgrade/
+wp/
 vendor/
 
 public/app/cache/
