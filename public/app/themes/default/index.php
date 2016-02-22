@@ -14,6 +14,13 @@ if ( is_404() ) {
   array_unshift( $templates, 'home' );
 } elseif ( is_singular() ) {
   array_unshift( $templates, 'single' );
+} elseif ( is_single() ) {
+  array_unshift( $templates, 'single' );
+  array_unshift( $templates, 'single-' . get_post_type() );
+  array_unshift( $templates, 'single-' . get_post_type() . "-" . $post->post_name);
+} elseif ( is_page() ) {
+  array_unshift( $templates, 'page' );
+  array_unshift( $templates, 'page-' . $post->post_name);
 } elseif ( is_archive() ) {
   if ( is_day() ) {
     $context['title'] = 'Archive: '.get_the_date( 'D M Y' );
@@ -29,6 +36,7 @@ if ( is_404() ) {
     $context['title'] = post_type_archive_title( '', false );
   }
   array_unshift( $templates, 'archive' );
+  array_unshift( $templates, 'archive-' . get_post_type() );
 } elseif ( is_page() ) {
   array_unshift( $templates, 'page' );
 }
