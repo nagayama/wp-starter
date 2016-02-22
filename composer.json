@@ -25,7 +25,7 @@
     "php": ">=5.4"
   },
   "extra": {
-    "wordpress-install-dir": "wp",
+    "wordpress-install-dir": "public/wp",
     "installer-paths": {
       "public/app/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
       "public/app/plugins/{$name}/": ["type:wordpress-plugin"],
