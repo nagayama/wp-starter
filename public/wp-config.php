@@ -32,27 +32,28 @@ default:
   break;
 }
 
-if ( defined("WP_ADMIN") && WP_ADMIN === true ) {
-  if (!($_SERVER['PHP_AUTH_USER'] == getenv('PHP_AUTH_USER') && $_SERVER['PHP_AUTH_PW'] == getenv('PHP_AUTH_PW'))) {
-    header('WWW-Authenticate: Basic realm="Private Page"');
-    header('HTTP/1.0 401 Unauthorized');
-    die();
-  }
+if (!($_SERVER['PHP_AUTH_USER'] == getenv('PHP_AUTH_USER') && $_SERVER['PHP_AUTH_PW'] == getenv('PHP_AUTH_PW'))) {
+  header('WWW-Authenticate: Basic realm="Private Page"');
+  header('HTTP/1.0 401 Unauthorized');
+  die();
 }
+
+$proto = $_SERVER['HTTPS'] ? "https://" : "http://";
 
 $defaults = [
   'AUTOMATIC_UPDATER_DISABLED' => true,
   'DISABLE_WP_CRON'            => true,
   'DISALLOW_FILE_EDIT'         => true,
   'WP_POST_REVISIONS'          => 20,
-  'WP_HOME'                    => 'http://' . $_SERVER['SERVER_NAME'],
+  'WP_HOME'                    => $proto . $_SERVER['SERVER_NAME'],
   'WP_CONTENT_DIR'             => $webroot_dir . $content_dir,
-  'WP_SITEURL'                 => 'http://' . $_SERVER['SERVER_NAME'] . $wp_dir,
+  'WP_SITEURL'                 => $proto . $_SERVER['SERVER_NAME'] . $wp_dir,
   'DB_NAME'                    => '',
   'DB_USER'                    => '',
   'DB_PASSWORD'                => '',
   'DB_HOST'                    => 'localhost',
   'DB_CHARSET'                 => 'utf8',
+  'DB_COLLATE'                 => '',
   'AUTH_KEY'                   => null,
   'SECURE_AUTH_KEY'            => null,
   'LOGGED_IN_KEY'              => null,
@@ -61,7 +62,7 @@ $defaults = [
   'SECURE_AUTH_SALT'           => null,
   'LOGGED_IN_SALT'             => null,
   'NONCE_SALT'                 => null,
-  ];
+];
 
 foreach($defaults as $key => $val) {
   if(getenv($key)) {
@@ -72,7 +73,6 @@ foreach($defaults as $key => $val) {
 }
 
 define('WP_CONTENT_URL' , WP_HOME . $content_dir);
-define('DB_COLLATE'  , '');
 $table_prefix = getenv('DB_PREFIX') ? getenv('DB_PREFIX') : 'wp_';
 
 require_once(ABSPATH . 'wp-settings.php');
