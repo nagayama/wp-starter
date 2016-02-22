@@ -1,7 +1,7 @@
 <?php
-require_once(__DIR__ . '/vendor/autoload.php');
+require_once(dirname(__DIR__) . '/vendor/autoload.php');
 
-$root_dir = __DIR__;
+$root_dir = dirname(__DIR__);
 $webroot_dir = __DIR__;
 $wp_dir = '/wp';
 $content_dir = '/app';
@@ -13,8 +13,9 @@ if (!defined('ABSPATH')) {
   define('ABSPATH', $webroot_dir . $wp_dir);
 }
 
-Dotenv::load($root_dir);
-Dotenv::required(array('DB_NAME', 'DB_USER', 'DB_PASSWORD'));
+$dotenv = new Dotenv\Dotenv(dirname(__DIR__));
+$dotenv->load();
+$dotenv->required(array('DB_NAME', 'DB_USER', 'DB_PASSWORD'));
 
 switch (getenv('WP_ENV')) {
 case 'development':

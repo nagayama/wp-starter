@@ -10,16 +10,16 @@
 
 .htaccess
 
-app/themes/*/node_modules/
-app/themes/*/dist/
-app/languages/
-app/mu-plugins/
-app/plugins/
-app/uploads/
-app/upgrade/
-wp/
 vendor/
 
-public/app/cache/
 public/app/advanced-cache.php
+public/app/cache/
+public/app/languages/
+public/app/mu-plugins/
+public/app/plugins/
+public/app/themes/*/dist/
+public/app/themes/*/node_modules/
+public/app/upgrade/
+public/app/uploads/
 public/app/wp-cache-config.php
+public/wp/
