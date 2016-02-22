@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) {
 
 $dotenv = new Dotenv\Dotenv(dirname(__DIR__));
 $dotenv->load();
-$dotenv->required(array('DB_NAME', 'DB_USER', 'DB_PASSWORD'));
+$dotenv->required(array('DB_NAME', 'DB_USER', 'DB_PASSWORD', 'AUTH_KEY'));
 
 switch (getenv('WP_ENV')) {
 case 'development':
